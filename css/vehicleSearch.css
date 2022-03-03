@@ -1,0 +1,230 @@
+/*-------------------------*\
+  Top image Section
+\*-------------------------*/
+.top-image{
+	width: 100%;
+	background-color: var(--darkblue);
+	height: 50vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 5em;
+	text-transform: uppercase;
+	font-weight: 900;
+	letter-spacing: 10px;
+	-webkit-text-stroke-width: 5px;
+	-webkit-text-stroke-color: var(--midblue);
+	text-align: center;
+	color: white;
+	background: url('../img/Vehicle/header.jpg') content-box;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
+/*-------------------------*\
+  Advanced Search Section
+\*-------------------------*/
+
+.advanced-search{
+	margin: 5px;
+	padding: 10px;
+}
+	.advanced-search h3{
+	margin-bottom: 2px;
+	}
+	.form-content{
+		display: flex;
+		margin-top: 10px;
+	}
+		.wrapper{
+			border: 1px solid var(--lightblack);
+			flex-wrap: nowrap;
+			padding: 12px 24px 5px;
+			box-sizing: border-box;
+			height: 75px;
+			box-sizing: border-box;
+		}
+			.wrapper label{
+				display: block;
+				color: var(--midblack);
+				font-size: 14px;
+				line-height: 1.2;
+			}
+			.wrapper input{
+				margin-top: 5px;
+				width: 100%;
+				border: 0px;
+				line-height: 1.3;
+				font-weight: 800;
+				height: 20px;
+				font-size: 16px;
+				vertical-align: middle;
+				text-overflow: ellipsis;
+				overflow: hidden;
+			}
+			.wrapper input[type="date"]{
+				position: relative;
+				background:
+					white
+					url("https://img.icons8.com/windows/32/000000/calendar-week.png")
+					right 0.5em
+					center
+					no-repeat;
+				cursor:pointer;
+			}
+			.wrapper input[type="date"]::-webkit-clear-button,
+			.wrapper input[type="date"]::-webkit-inner-spin-button{
+				display: none;
+			}
+			.wrapper input[type="date"]::-webkit-calendar-picker-indicator {
+				position: absolute;
+				width:100%;
+				height:100%;
+				top:0;
+				right:0;
+				bottom:0;
+				opacity:0;
+				cursor:pointer;
+				color:rgba(0, 120, 250, 1);
+				background:rgba(0, 120, 250, 1);
+			}
+		.wrapper0{
+			flex-grow: 2;
+		}
+		.wrapper1{
+			flex-grow: 2;
+		}
+		.wrapper2{
+			flex-grow: 1;
+		}
+			.wrapper .inputType{
+				padding: 5px;
+				cursor: pointer;
+				width: 100%;
+				border: 0px;
+				font-weight: 800;
+				height: auto;
+				font-size: 16px;
+				vertical-align: middle;
+				text-overflow: ellipsis;
+			}
+			.inputType option{
+				font-weight: 600;
+			}
+			.inputType option:checked{
+				background-color: var(--darkblue);
+				color: white;
+			}
+		.wrapper3{
+			padding: 0px;
+			text-align: center;
+			width: 75px;
+			min-width: 75px;
+			flex-shrink: 1;
+			border: 0px;
+		}
+			.wrapper3 .icon, .wrapper3 .text{
+				width: 100%;
+				height: 100%;
+				background-color: var(--midblue);
+				color: white;
+				border: 0px;
+				font-size: 32px;
+			}
+			.wrapper3 .text{
+				display: none;
+			}
+/*-------------------------*\
+  Main Content Sction
+\*-------------------------*/
+.main-content{
+	grid-column: 2/-1;
+	display: flex;
+	flex-direction: column;
+}
+/*searched content grid view*/
+.searched-content{
+	display: grid;
+	grid-gap: 1em;
+	margin-bottom: 10px;
+}
+.searched-content{
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+.searched-content .searched-item{
+	width: auto;
+	padding: 10px 5px;
+	border: 1px solid var(--black30);
+	border-radius: 5px;
+	opacity: 0;
+}
+.searched-content .searched-item{
+	text-align: center;
+}
+	.searched-content .searched-item a{
+		text-decoration: none;
+	}
+	.searched-content .searched-item:hover{
+		box-shadow: 1.5px 1.5px 5px grey;
+	}
+	.searched-content .searched-item a img{
+		height: auto;
+		padding: 20px;
+	}
+	.searched-content .searched-item a img{
+		width: 100%;
+	}
+	.searched-content .searched-item a h3{
+		font-family: 'Mada', sans-serif;
+		margin-top: auto;
+		color: var(--midblue);
+	}
+	.searched-content .searched-item a h1, h2, div .details{
+		color: var(--darkblue);
+		display: inline;
+	}
+	.searched-content .searched-item a div{
+		margin-top: 3px;
+	}
+	.searched-content .searched-item a div .details{
+		font-size: 18px;
+	}
+	.searched-content .searched-item a div .details i[class="fa fa-map-marker"]{
+		color: red;
+	}
+	.searched-content .searched-item a div .details i[class="fa fa-star checked"]{
+		color: orange;
+	}
+
+
+/*-------------------------*\
+  Device Max width is 760 or lower
+\*-------------------------*/
+@media screen and (max-width: 760px) {
+	.form-content{
+		flex-direction: column;
+	}
+	.wrapper3{
+		width: 100%;
+	}
+	.wrapper3 .text{
+		display: initial;
+	}
+	.wrapper3 .icon{
+		display: none;
+	}
+	.wrapper2{
+		width: 100%;
+	}
+
+	.grid-container{
+		grid-template-columns: 1fr;
+	}
+	.main-content{
+		grid-column: 1/-1;
+	}
+}
+
+/* animations */
+body .advanced-search{animation-delay: 0.25s;}
+body .grid-container{animation-delay: 0.35s;}

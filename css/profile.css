@@ -1,0 +1,57 @@
+.main{
+  width: 100%;
+}
+td:first-child{ 
+  font-weight: 700;
+  padding: 1em 2em;
+}
+section{
+  padding: 1.5em 0;
+  display: grid;
+  grid-template-columns:1fr;
+  align-items: center;
+  justify-items: center;
+  grid-gap: 1em;
+}
+.user-details{
+  padding: 1em 0.5em;
+  border-radius: 1em;
+  background: rgb(254,255,0);
+  background: linear-gradient(31deg, rgba(254,255,0,1) 0%, rgba(148,233,223,1) 100%);
+  width: 100%;
+  display: flex;
+  gap: 5em;
+  justify-content: center;
+}
+.user-img{
+  border: 1px solid black;
+  border-radius: 50%;
+  width: 10vw;
+  height: 10vw;
+}
+.user-update{
+  grid-column: 1/-1;
+  background-color: var(--lightblue);
+  padding: 1em 0.75em;
+  border-radius: 1em;
+}
+.user-update tr input{
+  padding: 0.25em 1em ;
+  font-size: 1.1em;
+}
+.user-update tr:first-child input{
+  color: rgb(63, 63, 63);
+  cursor: not-allowed;
+  user-select: none;
+}
+.user-update tr:last-child input{
+  width: 100%;
+  text-transform: uppercase;
+  padding: 0.5em 1em;
+}
+@media screen and (max-width: 760px) {
+  .user-img{
+    width: 30vw;
+    height: 30vw;
+  }
+}

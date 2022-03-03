@@ -1,0 +1,14 @@
+.ayubowanimg{
+	
+	height: 250px;
+	width: auto;
+}
+.notice01{
+	align-content:right;
+	/*width: 30%;*/
+	flex-grow: 1;
+	text-align: justify;
+	font-family: 'Roboto', sans-serif;
+	color:#737373;
+	line-height: 1.5;
+}
