@@ -165,34 +165,6 @@ img{
      animation-timing-function: ease-out;
  }
 }
-.header-form{
-  background: rgba(6, 6, 10, 0.5);
-  padding: 3rem;
-  border-radius: 0.2rem;
-  backdrop-filter: blur(7px);
-}
-.header-form h3 {
-  font-size: 1.2rem;
-}
-.header-form form{
-  flex-direction: column;
-  margin-top: 1.8rem;
-}
-.header-form form .form-control{
-  box-shadow: 2px 4px 4px rgba(7, 6, 10, 0.4);
-}
-.header-form input[type="date"]{
-  text-transform: uppercase;
-}
-.header-form input:not([type= "submit"])::placeholder{
-  color: #fff;
-}
-::-webkit-calender-picker-indicator{
-  filter: invert(1);
-}
-.header-form .btn{
-  margin-top: 0.8rem;
-}
 
 /* change background on scoll*/
 
@@ -454,9 +426,3 @@ img{
   transform: translateY(-50px) scale(1.2);
   box-shadow: 1px 1px 5px white;
 }
-
-
-
-
-
-

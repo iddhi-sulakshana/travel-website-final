@@ -1,4 +1,15 @@
-<?php include 'head.php' ?>
+<?php 
+    include 'dbcon.php';
+    $conn = OpenCon();
+    $sql = "SELECT `vehicleId`, `vehicleName`, `vehiclePrice`, `vehicleSeats`, `vehicleAddress` FROM `table_vehicle` ORDER BY RAND() LIMIT 3";
+    $vehicleResult = $conn->query($sql);
+    $sql = "SELECT `hotelId`, `hotelName`, `hotelDistrict`, `hotePrice` FROM `table_hotel` ORDER BY RAND() LIMIT 3";
+    $hotelResult = $conn->query($sql);
+    $sql = "SELECT `restaurantId`, `restaurantName`, `restaurantDistrict`, `restaurantPrice` FROM `table_restaurant` ORDER BY RAND() LIMIT 3";
+    $restaurantResult = $conn->query($sql);
+
+    include 'head.php'
+?>
     <title>Plan&Go</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="css/home.css">
@@ -11,15 +22,6 @@
                 <p>
                     The tourism industry plays a significant role in the sri lanaka economy with over 1600Km of coastline, Sri Lanaka can be known for its tropical beach resorts and other tourist attractions including ancient heritage sites and forest resorts in wildife sanctuaries.many visitors are attracted because of its cultural diversities and they visit these places to make their tour However there ate many amazing places that you should not miss whenever you visit around Sri Lanaka
                 </p>
-                <div class="header-form">
-                    <h2>Choose Your Travel Location:</h2>
-                    <form class="flex">
-                        <input type="text" class="form-control" placeholder="Destination name">
-                        <input type="date" class="form-control" placeholder="Date">
-                        <input type="number" class="form-control" placeholder="price ($)">
-                        <input type="submit" class="btn" value="search">
-                    </form>
-                </div>
             </div>
         </div>
     </section>
@@ -159,8 +161,8 @@
     <section id="services" class="py-4">
         <div class="container">
             <div class="title-wrap">
-                <span class="sm-title">know about Our services</span>
-                <h2 class="lg-title">our services</h2>
+                <span class="sm-title">Know About Our Services</span>
+                <h2 class="lg-title">Our Services</h2>
         </div>
             <div class="all-select">
             <div class="services-row">
@@ -168,9 +170,9 @@
                     <span class="services-icon">
                         <i class="fas fa-hotel"></i>
                     </span>
-                    <h3>Luxurious Hoteol</h3>
-                    <p class="text">Now you can get Luxuriousaccommodation at Luxurious hotels from our website. we connect you to best Luxurious hotel for your accommadatoin</p>
-                    <a href="###" class="btn">Read More..</a>
+                    <h3>Luxurious Hotel</h3>
+                    <p class="text">Now you can get Luxurious accommodation at Luxurious hotels from our website. we connect you to best Luxurious hotel for your accommadatoin</p>
+                    <a href="hotel_search.php" class="btn">Read More..</a>
                 </div>
             </div>
 
@@ -181,7 +183,7 @@
                     </span>
                     <h3>Travel Guide Map</h3>
                     <p class="text">we are give best parth for your travel points allways. it's main benefit is, it work without a signal..that way you can travel in any area without any fear</p>
-                    <a href="###" class="btn">Read More..</a>
+                    <a href="https://www.srilanka.travel/tourist-map" class="btn">Read More..</a>
                 </div>
             </div>
 
@@ -192,7 +194,7 @@
                     </span>
                     <h3>Restaurants</h3>
                     <p class="text">We give information to you about island wide Restaurants at your travel locations.We hope it will be useful to your dream tour.</p>
-                    <a href="###" class="btn">Read More..</a>
+                    <a href="restaurant_search.php" class="btn">Read More..</a>
                 </div>
             </div>
 
@@ -203,7 +205,7 @@
                     </span>
                     <h3>Vehicles</h3>
                     <p class="text">You can select a Vehicle duly for your tour and according to your wishes. and you able to go your destination safety.our web page is bound for that</p>
-                    <a href="###" class="btn">Read More..</a>
+                    <a href="vehicle_search.php" class="btn">Read More..</a>
                 </div>
             </div>
 
@@ -214,7 +216,7 @@
                     </span>
                     <h3>Travel Accessories</h3>
                     <p class="text">YOu will wont different Accessories for your tour. don't worry about that. you can get the Accessories you need from us as per your requirment.we are committed to that</p>
-                    <a href="###" class="btn">Read More..</a>
+                    <a href="http://campinggear.lk/" class="btn">Read More..</a>
                 </div>
             </div>
 
@@ -225,7 +227,7 @@
                     </span>
                     <h3>Packages</h3>
                     <p class="text">This can be described as a offer we give for you.this parts like a full Package for your trip. A hotel, Restaurants, a Vehicle are belong to for that</p>
-                    <a href="###" class="btn">Read More..</a>
+                    <a href="packages.php" class="btn">Read More..</a>
                 </div>
             </div>
 
@@ -236,7 +238,7 @@
                     </span>
                     <h3>Travel Guide</h3>
                     <p class="text">We give well-balanced Guides for your tour. And also we guarantee faithfull about them.it can be described as an additional Qualification provided to you by our web page</p>
-                    <a href="###" class="btn">Read More..</a>
+                    <a href="#Guide" class="btn">Read More..</a>
                 </div>
             </div>
 
@@ -247,7 +249,7 @@
                     </span>
                     <h3>About Us</h3>
                     <p class="text">This page provides an opporunity for you to contact us if you encounter any problems or shortcomings in our website</p>
-                    <a href="###" class="btn">Read More..</a>
+                    <a href="aboutus.php" class="btn">Read More..</a>
                 </div>
             </div>
 
@@ -257,9 +259,9 @@
                         <i class="fas fa-user-alt"></i>
                         
                     </span>
-                    <h3>Own Account</h3>
+                    <h3>Create Account</h3>
                     <p class="text">You can create yourown account on our website. then we offer you special offers and discounts.</p>
-                    <a href="###" class="btn">Read More..</a>
+                    <a href="login.php" class="btn">Read More..</a>
                 </div>
             </div>
             </div>
@@ -274,116 +276,65 @@
         <div class="container">
             <div class="title-wrap">
                 <span class="sm-title">know about Our special offers</span>
-                <h2 class="lg-title">Special Offers</h2>
+                <h2 class="lg-title">
+                    <?php
+                        if(!($vehicleResult->num_rows > 0 AND $hotelResult->num_rows > 0 AND $restaurantResult->num_rows > 0)){
+                            echo "No Special Offers";
+                        } else {
+                            echo "Special Offers";
+                    ?>
+                </h2>
         </div>
             <div class="all-select">
-            <div class="offers-row">
-                <div class="offers-item">
-                    <span class="offers-icon">
-                        <i class="fas fa-car"></i>
-                    </span>
-                    <h4>CHR</h4>
-                    <p class="text">Do you plan togo on a tour this month ?... Then here is a great opportunity for you. If you rent a this car we give 15% discount to you</p>
-                    <a href="###" class="btn">book Now</a>
-
-                </div>
-            </div>
-
-            <div class="offers-row">
-                <div class="offers-item">
-                    <span class="offers-icon">
-                        <i class="fas fa-car"></i>
-                    </span>
-                    <h4>MINI cooper</h4>
-                    <p class="text">Do you like classic cars?..Do you plan togo on a tour this month ?... Then here is a great opportunity for you. If you rent a this car we give 12% discount to you</p>
-                    <a href="###" class="btn">book Now</a>
-                </div>
-            </div>
-
-            <div class="offers-row">
-                <div class="offers-item">
-                    <span class="offers-icon">
-                        <i class="fas fa-car"></i>
-                    </span>
-                    <h4>Defender</h4>
-                    <p class="text">Do you like to ride offroad...? Do you plan togo on a tour this month ?... Then here is a great opportunity for you. If you rent a this car we give 15% discount to you</p>
-                    <a href="###" class="btn">book Now</a>
-                    
-                </div>
-            </div>
-
-            <div class="offers-row">
-                <div class="offers-item">
-                    <span class="offers-icon">
-                        <i class="fas fa-hotel"></i>
-                    </span>
-                    <h4>Man mountain villa</h4>
-                    <p class="text">Are you someone who likes to spend time in a free environment.Now we are give advantageous opportunity to our passengers,on this month.we give 15% discount for hotel accommodation fees at man mountain villa</p>
-                    <a href="###" class="btn">book Now</a>
-                    
-                </div>
-            </div>
-
-            <div class="offers-row">
-                <div class="offers-item">
-                    <span class="offers-icon">
-                        <i class="fas fa-hotel"></i>
-                    </span>
-                    <h4>Kandy City Hotel</h4>
-                    <p class="text">If you wont to save time on your trip and are looking for a hotel in the city, here's a great opportunity for you..!!! we give 12% discount for this hptel in this month</p>
-                    <a href="###" class="btn">book Now</a>
-                    
-                </div>
-            </div>
-
-            <div class="offers-row">
-                <div class="offers-item">
-                    <span class="offers-icon">
-                        <i class="fas fa-hotel"></i>
-                    </span>
-                    <h4>Heritance Kandalama</h4>
-                    <p class="text">If you are looking for a Luxurious place to relax, here's a great opportunityfor you..!!. We give 5% discount for hotel accommodation fees at Heritance Kandalama hotel </p>
-                    <a href="###" class="btn">book Now</a>
-                    
-                </div>
-            </div>
-
-            <div class="offers-row">
-                <div class="offers-item">
-                    <span class="offers-icon">
-                        <i class="fas fa-bars"></i>
-                    </span>
-                    <h4>Alankulama Restaurant</h4>
-                    <p class="text">Here's a great opportunity for you..!!!. You get can get 5% discount on all orders over RS.3000 at Dolce Italia Restaurant</p>
-                    <a href="###" class="btn">book Now</a>
-                    
-                </div>
-            </div>
-
-            <div class="offers-row">
-                <div class="offers-item">
-                    <span class="offers-icon">
-                        <i class="fas fa-bars"></i>
-                    </span>
-                    <h4>Dolce Italia</h4>
-                    <p class="text">Here's a great opportunity for you..!!!. You get can get 8% discount on all orders over RS. 5000 at Dolce Italia Restaurant</p>
-                    <a href="###" class="btn">book Now</a>
-                    
-                </div>
-            </div>
-
-            <div class="offers-row">
-                <div class="offers-item">
-                    <span class="offers-icon">
-                        <i class="fas fa-bars"></i>
-                        
-                    </span>
-                    <h4>Indian Summer Restaurant</h4>
-                    <p class="text">Here's a great opportunity for you..!!!. You get can get 10% discount on all orders over RS.10000 at Dolce Italia Restaurant</p>
-                    <a href="###" class="btn">book Now</a>
-                    
-                </div>
-            </div>
+            <?php if($vehicleResult->num_rows > 0){
+                foreach($vehicleResult as $item){ ?>
+                    <div class="offers-row">
+                        <div class="offers-item">
+                            <span class="offers-icon">
+                                <i class="fas fa-car"></i>
+                            </span>
+                            <h4><?php echo $item['vehicleName'] ?></h4>
+                            <p class="text">
+                                Rs. <?php echo $item['vehiclePrice'] ?> <br>
+                                <?php echo $item['vehicleSeats'] ?> Seats <br>
+                                <?php echo $item['vehicleAddress'] ?><br>
+                            </p>
+                            <a href="vehicle_view.php?VId=<?php echo $item['vehicleId'] ?>" class="btn">Check Out</a>
+                        </div>
+                    </div>
+            <?php }} ?>
+            <?php if($hotelResult->num_rows > 0){
+                foreach($hotelResult as $item){ ?>
+                    <div class="offers-row">
+                        <div class="offers-item">
+                            <span class="offers-icon">
+                                <i class="fas fa-hotel"></i>
+                            </span>
+                            <h4><?php echo $item['hotelName'] ?></h4>
+                            <p class="text">
+                                Rs. <?php echo $item['hotePrice'] ?> <br>
+                                <?php echo $item['hotelDistrict'] ?><br>
+                            </p>
+                            <a href="hotel_view.php?VId=<?php echo $item['hotelId'] ?>" class="btn">Check Out</a>
+                        </div>
+                    </div>
+            <?php }} ?>
+            <?php if($vehicleResult->num_rows > 0){
+                foreach($restaurantResult as $item){ ?>
+                    <div class="offers-row">
+                        <div class="offers-item">
+                            <span class="offers-icon">
+                                <i class="fas fa-bars"></i>
+                            </span>
+                            <h4><?php echo $item['restaurantName'] ?></h4>
+                            <p class="text">
+                                Rs. <?php echo $item['restaurantPrice'] ?> <br>
+                                <?php echo $item['restaurantDistrict'] ?><br>
+                            </p>
+                            <a href="restaurant_view.php?VId=<?php echo $item['restaurantId'] ?>" class="btn">Check Out</a>
+                        </div>
+                    </div>
+            <?php }}} ?>
             </div>
         </div>
     </section>
