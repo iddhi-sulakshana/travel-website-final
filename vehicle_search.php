@@ -1,25 +1,70 @@
-<?php include 'head.php' ?>
+	<?php 
+		include 'head.php';
+		if(isset($_REQUEST['vehicleType']) && trim($_REQUEST['vehicleType']) != ''){
+			$vType = htmlspecialchars($_REQUEST['vehicleType']);
+		}
+		if(isset($_REQUEST['district']) && trim($_REQUEST['district']) != ''){
+			$district = htmlspecialchars($_REQUEST['district']);
+		}
+		if(isset($_REQUEST['seats']) && trim($_REQUEST['seats']) != ''){
+			$seat = htmlspecialchars($_REQUEST['seats']);
+		}
+		include 'dbcon.php';
+		$sql = "SELECT `vehicleId`, `vehicleImagePri`, `vehicleName`, `vehiclePrice`, `vehicleSeats`, `vehicleDistrict`, `vehiclePrice`, `vehicleRating` FROM `table_vehicle`";
+		if(isset($vType) || isset($district) || isset($seat)){
+			$sql .= " WHERE";
+			if(isset($vType)){
+				$sql .= " vehicleType='" . $vType . "'";
+			}
+			if(isset($district)){
+				$tmpsql = explode(" ", $sql);
+				if(end($tmpsql) == "WHERE"){
+					$sql .= " vehicleDistrict='" . $district . "'";
+				} else{
+					$sql .= " AND vehicleDistrict='" . $district . "'";
+				}
+				unset($tempsql);
+			}
+			if(isset($seat)){
+				$tmpsql = explode(" ", $sql);
+				if($seat == '5+'){
+					$seat = " > 5";
+				} else {
+					$seat = "=" . $seat;
+				}
+				if(end($tmpsql) == "WHERE"){
+					$sql .= " vehicleSeats" . $seat;
+				} else{
+					$sql .= " AND vehicleSeats" . $seat;
+				}
+				unset($tempsql);
+			}
+		}
+		$conn = OpenCon();
+		$result = $conn->query($sql);
+		CloseCon($conn);
+	?>
 	<title>Search For Vehicle</title>
 	<link rel="stylesheet" hreflang="" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/vehicleSearch.css" type="text/css">
-<?php include 'header.php' ?>
+	<?php include 'header.php' ?>
 	<section class="top-image">Rent a Vehicle</section>
 	<section class="advanced-search">
 		<h3>Rent Vehicle</h3>
-		<form name="advanced-search-form" method="GET" action="vehicle_search.php">
+		<form name="advanced-search-form" method="POST" action="vehicle_search.php">
 			<div class="form-content">
 				<div class="wrapper wrapper0">
 					<label for="vehicleType">Vehicle Type</label>
-					<select name="vehicleType" class="inputType" required="">
+					<select name="vehicleType" class="inputType">
 						<option value="">Vehicle Type</option>
-						<option value="Car">Car</option>
+						<option value="Car" >Car</option>
 						<option value="Van">Van</option>
 						<option value="Bus">Bus</option>
 					</select>
 				</div>
 				<div class="wrapper wrapper1">
 					<label for="district">District</label>
-					<select name="district" class="inputType" required="">
+					<select name="district" class="inputType">
 						<option value="">Select District</option>
 						<option value="Ampara">Ampara</option>
 						<option value="Anuradhapura">Anuradhapura</option>
@@ -50,12 +95,12 @@
 				</div>
 				<div class="wrapper wrapper2">
 					<label for="seats">seats</label>
-					<select name="seats" class="inputType" required="">
+					<select name="seats" class="inputType">
 						<option value="">Select Seat Count</option>
 						<option value="2">2</option>
 						<option value="3">3</option>
 						<option value="4">4</option>
-						<option value="4">4</option>
+						<option value="5">5</option>
 						<option value="5+">5+</option>
 					</select>
 				</div>
@@ -72,107 +117,36 @@
 	<section class="grid-container">
 			<div class="main-content">
 				<div class="searched-content" id="listingContent">
-					<div class="searched-item">
-						<a href="vehicle_view.php?VId=1">
-						<img src="img/Vehicle/car1.jpg" alt="product image">
-						<h3>Rent a Car</h3>
-						<h1 class="product-price">$ 4500.<h2>00</h2></h1>
-						<div>
-							<p class="details">&#128186;5</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Anuradhapura</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-						</a>
-					</div>
-					<div class="searched-item">
-						<a href="vehicle_view.php?VId=2">
-						<img src="img/Vehicle/van1.jpg" class="product-image" alt="product image">
-						<h3 class="product-title">Rent a car</h3>
-						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
-						<div>
-							<p class="details">&#128186;5</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Anuradhapura</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-						</a>
-					</div>
-					<div class="searched-item">
-						<a href="vehicle_view.php?VId=3">
-						<img src="img/Vehicle/car2.jpg" class="product-image" alt="product image">
-						<h3 class="product-title">Rent a 3-Wheel</h3>
-						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
-						<div>
-							<p class="details">&#128186;5</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Anuradhapura</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-						</a>
-					</div>
-					<div class="searched-item">
-						<a href="vehicle_view.php?VId=4">
-						<img src="img/Vehicle/van2.jpg" class="product-image" alt="product image">
-						<h3 class="product-title">Rent a Car</h3>
-						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
-						<div>
-							<p class="details">&#128186;4</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Anuradhapura</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-						</a>
-					</div>
-					<div class="searched-item">
-						<a href="vehicle_view.php?VId=5">
-						<img src="img/Vehicle/van3.jpg" class="product-image" alt="product image">
-						<h3 class="product-title">Rent a Bus</h3>
-						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
-						<div>
-							<p class="details">&#128186;5</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Anuradhapura</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-						</a>
-					</div>
-					<div class="searched-item">
-						<a href="vehicle_view.php?VId=6">
-						<img src="img/Vehicle/bus1.jpg" class="product-image" alt="product image">
-						<h3 class="product-title">Rent a car</h3>
-						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
-						<div>
-							<p class="details">&#128186;5</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Anuradhapura</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-						</a>
-					</div>
-					<div class="searched-item">
-						<a href="vehicle_view.php?VId=7">
-						<img src="img/Vehicle/car3.jpg" class="product-image" alt="product image">
-						<h3 class="product-title">Rent a car</h3>
-						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
-						<div>
-							<p class="details">&#128186;5</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Anuradhapura</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-						</a>
-					</div>
-					<div class="searched-item">
-						<a href="vehicle_view.php?VId=8">
-						<img src="img/Vehicle/car4.jpg" class="product-image" alt="product image">
-						<h3 class="product-title">Rent a car</h3>
-						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
-						<div>
-							<p class="details">&#128186;5</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Anuradhapura</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-						</a>
-					</div>
+					<?php
+						if($result->num_rows > 0){
+							foreach ($result as $resultItem){ ?>
+								<div class="searched-item">
+									<a href="vehicle_view.php?VId=<?php echo $resultItem['vehicleId'] ?>">
+									<img src="img/Vehicle/<?php echo $resultItem['vehicleImagePri'] ?>" alt="product image">
+									<h3><?php echo $resultItem['vehicleName'] ?></h3>
+									<h1 class="product-price">Rs. <?php echo $resultItem['vehiclePrice'] ?></h1>
+									<div>
+										<p class="details">&#128186;<?php echo $resultItem['vehicleSeats'] ?></p>
+										<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $resultItem['vehicleDistrict'] ?></p>
+										<p class="details"><i class="fa fa-star checked"></i> <?php echo $resultItem['vehicleRating'] ?></p>
+									</div>
+									</a>
+								</div>
+						<?php 
+							}
+						}
+						else{
+							echo "<h1>No Results</h1>";
+						}
+					?>
 				</div>
 			</div>
 	</section>
 	
-	<?php include 'footer.php' ?>
+	<?php 
+		include 'footer.php';
+		include 'messageDisplay.php';	
+	?>
 	<script src="js/vehicleSearch.js"></script>
 </body>
 </html>

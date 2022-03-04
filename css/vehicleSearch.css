@@ -147,9 +147,7 @@
 	display: grid;
 	grid-gap: 1em;
 	margin-bottom: 10px;
-}
-.searched-content{
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-template-columns: repeat(4, minmax(250px, 1fr));
 }
 .searched-content .searched-item{
 	width: auto;
@@ -201,6 +199,10 @@
   Device Max width is 760 or lower
 \*-------------------------*/
 @media screen and (max-width: 760px) {
+	.top-image{
+		height: 60vh;
+		font-size: 4em;
+	}
 	.form-content{
 		flex-direction: column;
 	}
@@ -222,6 +224,9 @@
 	}
 	.main-content{
 		grid-column: 1/-1;
+	}
+	.searched-content{
+		grid-template-columns: repeat(1, minmax(250px, 1fr));
 	}
 }
 
