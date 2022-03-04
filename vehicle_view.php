@@ -25,27 +25,12 @@
 	$count2 = $count2->fetch_assoc();
 	$count1 = $count1->fetch_assoc();
 	CloseCon($conn);
-	
 	if($resultvehicle->num_rows < 1){
 		header('Location: vehicle_search.php');
 		exit();
 	}
-	$vehicleRow = $resultvehicle->fetch_assoc();
-	$name = $vehicleRow['vehicleName'];
-	$imgPri = $vehicleRow['vehicleImagePri'];
-	$img1 = $vehicleRow['vehicleImage1'];
-	$img2 = $vehicleRow['vehicleImage2'];
-	$img3 = $vehicleRow['vehicleImage3'];
-	$description = $vehicleRow['vehicleDescription'];
-	$seats = $vehicleRow['vehicleSeats'];
-	$website = $vehicleRow['vehicleWebsite'];
-	$phone = $vehicleRow['vehiclePhoneNo'];
-	$address = $vehicleRow['vehicleAddress'];
-	$map = $vehicleRow['vehicleMap'];
-	$rating = $vehicleRow['vehicleRating'];
-	$price = $vehicleRow['vehiclePrice'];
-	unset($sqlvehicle, $conn, $resultvehicle, $vehicleRow);
 	include 'head.php';
+	$vehicleRow = $resultvehicle->fetch_assoc();
 	if(isset($_SESSION['Id'])){
 		$uid = htmlspecialchars($_SESSION['Id']);
 		foreach ($resultrating as $sqlratingresult) {
@@ -56,70 +41,70 @@
 		}
 	}
 ?>
-	<title><?php echo $name ?></title>
+	<title><?php echo $vehicleRow['vehicleName'] ?></title>
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/vehicleView.css" type="text/css">
 	<?php include 'header.php' ?>
 	<section class="grid-container">
 		<div class="grid-images">
-			<img id="main-image" src="img/Vehicle/<?php echo $imgPri ?>" alt="image display">
-			<img src="img/Vehicle/<?php echo $imgPri ?>"  class="sub-image">
+			<img id="main-image" src="img/Vehicle/<?php echo $vehicleRow['vehicleImagePri'] ?>" alt="image display">
+			<img src="img/Vehicle/<?php echo $vehicleRow['vehicleImagePri'] ?>"  class="sub-image">
 			<?php 
-				if(!(is_null($img1))){
-					echo '<img src="img/Vehicle/' . $img1 . '"  class="sub-image">';
+				if(!(is_null($vehicleRow['vehicleImage1']))){
+					echo '<img src="img/Vehicle/' . $vehicleRow['vehicleImage1'] . '"  class="sub-image">';
 				}
-				if(!(is_null($img2))){
-					echo '<img src="img/Vehicle/' . $img2 . '"  class="sub-image">';
+				if(!(is_null($vehicleRow['vehicleImage2']))){
+					echo '<img src="img/Vehicle/' . $vehicleRow['vehicleImage2'] . '"  class="sub-image">';
 				}
-				if(!(is_null($img3))){
-					echo '<img src="img/Vehicle/' . $img3 . '"  class="sub-image">';
+				if(!(is_null($vehicleRow['vehicleImage3']))){
+					echo '<img src="img/Vehicle/' . $vehicleRow['vehicleImage3'] . '"  class="sub-image">';
 				}
 			?>
 		</div>
 		<div>
 			<div class="grid-details">
-			<h1><?php echo $name ?></h1>
-			<p>Location	: <?php echo $address ?> <i class="fa fa-map-marker" style="color: red" aria-hidden="true"></i> </p>
-			<p>Seats		: <?php echo $seats ?> &#128186;</p>
-			<p class="button price">Rs. <?php echo $price ?> / day</p>
+			<h1><?php echo $vehicleRow['vehicleName'] ?></h1>
+			<p>Location	: <?php echo $vehicleRow['vehicleAddress'] ?> <i class="fa fa-map-marker" style="color: red" aria-hidden="true"></i> </p>
+			<p>Seats		: <?php echo $vehicleRow['vehicleSeats'] ?> &#128186;</p>
+			<p class="button price">Rs. <?php echo $vehicleRow['vehiclePrice'] ?> / day</p>
 				<div class="buttons">
-					<a href="tel:<?php echo $phone ?>"><button class="button"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $phone ?></button></a>
-					<a href="<?php echo $website ?>" target="_blank"><button class="button"><i class="fa fa-link" aria-hidden="true"></i> Website</button></a>
-					<a href="<?php echo $map ?>"><button class="button"><i class="fa fa-street-view" aria-hidden="true"></i> Google Map</button></a>
+					<a href="tel:<?php echo $vehicleRow['vehiclePhoneNo'] ?>"><button class="button"><i class="fa fa-phone" aria-hidden="true"></i> <?php echo $vehicleRow['vehiclePhoneNo'] ?></button></a>
+					<a href="<?php echo $vehicleRow['vehicleWebsite'] ?>" target="_blank"><button class="button"><i class="fa fa-link" aria-hidden="true"></i> Website</button></a>
+					<a href="<?php echo $vehicleRow['vehicleMap'] ?>"><button class="button"><i class="fa fa-street-view" aria-hidden="true"></i> Google Map</button></a>
 				</div>
 		</div>
 		</div>
 		<div class="description">
-			<p><?php echo $description ?></p>
+			<p><?php echo $vehicleRow['vehicleDescription'] ?></p>
 		</div>
 		<div class="review-overview">
 			<h3>Review Overview</h3>
 			<div class="rating-details">
-			<p><b><?php echo $rating ?></b></p>
+			<p><b><?php echo $vehicleRow['vehicleRating'] ?></b></p>
 				<p>/5</p>
 				<p>
 				<?php
 				$full = 0;
 				$half = 0;
-				if($rating > 4.5){
+				if($vehicleRow['vehicleRating'] > 4.5){
 					$full = 5;
-				} else if($rating > 4.0){
+				} else if($vehicleRow['vehicleRating'] > 4.0){
 					$full = 4;	$half = 1;
-				} else if($rating > 3.5){
+				} else if($vehicleRow['vehicleRating'] > 3.5){
 					$full = 4;
-				} else if($rating > 3.0){
+				} else if($vehicleRow['vehicleRating'] > 3.0){
 					$full = 3;	$half = 1;
-				} else if($rating > 2.5){
+				} else if($vehicleRow['vehicleRating'] > 2.5){
 					$full = 3;
-				} else if($rating > 2.0){
+				} else if($vehicleRow['vehicleRating'] > 2.0){
 					$full = 2;	$half = 1;
-				} else if($rating > 1.5){
+				} else if($vehicleRow['vehicleRating'] > 1.5){
 					$full = 2;
-				} else if($rating > 1.0){
+				} else if($vehicleRow['vehicleRating'] > 1.0){
 					$full = 1;	$half = 1;
-				} else if($rating > 0.5){
+				} else if($vehicleRow['vehicleRating'] > 0.5){
 					$full = 1;
-				} else if($rating > 0){
+				} else if($vehicleRow['vehicleRating'] > 0){
 					$half = 1;
 				}
 				$i = $full;
@@ -141,38 +126,39 @@
 				<p><?php echo ($resultrating->num_rows > 0) ? $resultrating->num_rows : "No" ?> ratings</p>
 			</div>
 			<div class="seperate-rating">
+			<?php $numrows = ($resultrating->num_rows > 0) ? $resultrating->num_rows : 1; ?>					
 				<div class="rate-wrapper">
 					<p>5 <i class="fa fa-star"></i></p>
 					<div class="rating">
-						<div class="rating-value" style="width: <?php echo ($count5['Count'] / $resultrating->num_rows) * 100 ?>%;"></div>
+						<div class="rating-value" style="width: <?php echo ($count5['Count'] / $numrows) * 100 ?>%;"></div>
 					</div>
 					<p><?php echo $count5['Count'] ?></p>
 				</div>
 				<div class="rate-wrapper">
 					<p>4 <i class="fa fa-star"></i></p>
 					<div class="rating">
-						<div class="rating-value" style="width: <?php echo ($count4['Count'] / $resultrating->num_rows) * 100 ?>%;"></div>
+						<div class="rating-value" style="width: <?php echo ($count4['Count'] / $numrows) * 100 ?>%;"></div>
 					</div>
 					<p><?php echo $count4['Count'] ?></p>
 				</div>
 				<div class="rate-wrapper">
 					<p>3 <i class="fa fa-star"></i></p>
 					<div class="rating">
-						<div class="rating-value" style="width: <?php echo ($count3['Count'] / $resultrating->num_rows) * 100 ?>%;"></div>
+						<div class="rating-value" style="width: <?php echo ($count3['Count'] / $numrows) * 100 ?>%;"></div>
 					</div>
 					<p><?php echo $count3['Count'] ?></p>
 				</div>
 				<div class="rate-wrapper">
 					<p>2 <i class="fa fa-star"></i></p>
 					<div class="rating">
-						<div class="rating-value" style="width: <?php echo ($count2['Count'] / $resultrating->num_rows) * 100 ?>%;"></div>
+						<div class="rating-value" style="width: <?php echo ($count2['Count'] / $numrows) * 100 ?>%;"></div>
 					</div>
 					<p><?php echo $count2['Count'] ?></p>
 				</div>
 				<div class="rate-wrapper">
 					<p>1 <i class="fa fa-star"></i></p>
 					<div class="rating">
-						<div class="rating-value" style="width: <?php echo ($count1['Count'] / $resultrating->num_rows) * 100 ?>%;"></div>
+						<div class="rating-value" style="width: <?php echo ($count1['Count'] / $numrows) * 100 ?>%;"></div>
 					</div>
 					<p><?php echo $count1['Count'] ?></p>
 				</div>

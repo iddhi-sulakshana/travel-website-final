@@ -60,7 +60,7 @@
     $sum = $result['Sum'];
     $count = $result['Count'];
     $vehiclerate = $sum / $count;
-    $sql = "UPDATE `table_vehicle` SET `vehicleRating` = '" . $vehiclerate . "'";
+    $sql = "UPDATE `table_vehicle` SET `vehicleRating` = '" . $vehiclerate . "' WHERE `vehicleId` = " . $vid;
     $conn->query($sql);    
     CloseCon($conn);
     header("Location: vehicle_view.php?VId=" . $vid);
