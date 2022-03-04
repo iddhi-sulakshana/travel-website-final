@@ -8,7 +8,7 @@ SET time_zone = "+05:30";
 CREATE TABLE table_user(
   userId INT UNSIGNED AUTO_INCREMENT,
   userName VARCHAR(40) NOT NULL UNIQUE,
-  email VARCHAR(40) UNIQUE,
+  email VARCHAR(40) UNIQUE NOT NULL,
   phoneNo VARCHAR(10) UNIQUE,
   pwd VARCHAR(40),
   firstName VARCHAR(40),
@@ -148,9 +148,9 @@ CREATE TABLE table_attraction(
 INSERT INTO table_user(`userName`, `email`, `phoneNo`, `pwd`, `firstName`, `lastName`)
 VALUES 
 ('rami123', 'rami123@hotmail.com', '0112525252', '1234', 'Rami', 'Conrad'),
-('parker123', NULL, '0252525252', '1234', 'Parker', 'Benitez'),
+('parker123', 'parker123@hotmail.com', '0252525252', '1234', 'Parker', 'Benitez'),
 ('osian123', 'osian123@hotmail.com', NULL, '1234', 'Osian', 'Sharples'),
-('almond123', NULL, '0552525252', '1234', 'Brandy', 'Almond'),
+('almond123', 'almond123@hotmail.com', '0552525252', '1234', 'Brandy', 'Almond'),
 ('noah123', 'noah123@hotmail.com', NULL, '1234', 'Noah', 'Salgado'),
 ('shiv123', 'shiv123@gmail.com', '0111111111', '1234', 'Shiv', 'Harrison');
 

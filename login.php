@@ -1,3 +1,10 @@
+<?php
+    session_start();
+    if(isset($_SESSION["logged"])){
+        header("Location: profile.php");
+        exit;
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,11 +23,14 @@
         <div class="forms">
             <div class="form login">
                 <span class="title"> Login</span>
-
-
-                <form action="#">
+                <form action="checklogin.php" method="POST">
                     <div class="input-field">
-                        <input type="text" name="email" placeholder="Enter your email" required>
+                        <input type="text" name="EmailName" placeholder="Enter Email / Username" 
+                        <?php 
+                            if(isset($_REQUEST['EmailName'])){
+                                echo 'value = "' . $_REQUEST['EmailName'] . '"';
+                            }
+                        ?> required>
                         <i class="far fa-envelope icon"></i>
                     </div>
                     <div class="input-field">
@@ -34,10 +44,7 @@
                             <input type="checkbox" id="logCheck">
                             <label for="logCheck" class="text">Remember me</label>
                         </div>
-
                         <a href="#"class="text">Forgot password?</a>
-
-
                     </div>
 
                     <div class="input-field button">
@@ -51,7 +58,7 @@
                         <a href="#" class="text signup-link">Signup now</a>
                     </span><br>
                     <span class="text">
-                        <a href="index.php" class="text login-link">Go Back</a>
+                        <a href="index.php" class="text">Go Back</a>
                     </span>
                 </div>
             </div>
@@ -61,21 +68,33 @@
             <div class="form Signup">
                 <span class="title">Registration</span>
 
-                <form action="#">
+                <form action="register.php" method="POST">
                     <div class="input-field">
-                        <input type="text" name="name" placeholder="Enter your name" required>
+                        <input type="text" name="uname" placeholder="Enter user name" required
+                        <?php
+                            if(isset($_REQUEST['upName'])){
+                                echo 'value="' . $_REQUEST['upName'] . '"';
+                            }
+                        ?>
+                        >
                         <i class="far fa-user"></i>
                     </div>
                     <div class="input-field">
-                        <input type="text" name="email" placeholder="Enter your email" required>
+                        <input type="text" name="email" placeholder="Enter your email" required
+                        <?php
+                            if(isset($_REQUEST['upEmail'])){
+                                echo 'value="' . $_REQUEST['upEmail'] . '"';
+                            }
+                        ?>
+                        >
                         <i class="far fa-envelope icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" name="password" placeholder="Create password" required>
+                        <input type="password" class="password" name="password" placeholder="Password" required>
                         <i class="fas fa-lock icon"></i>
                     </div>
                     <div class="input-field">
-                        <input type="password" class="password" name="password" placeholder="Confrim password" required>
+                        <input type="password" class="password" name="repassword" placeholder="Confirm password" required>
                         <i class="fas fa-lock icon"></i>
                         <i class="far fa-eye-slash showHidePw"></i>
                     </div>
@@ -102,12 +121,19 @@
                         <a href="#" class="text login-link">Login now</a>
                     </span><br>
                     <span class="text">
-                        <a href="index.php" class="text login-link">Go Back</a>
+                        <a href="index.php" class="text">Go Back</a>
                     </span>
                 </div>
             </div>
         </div>
     </div>
+    
+    <script>
+        <?php 
+        if(isset($_REQUEST['message'])){?>
+            window.alert("<?php echo $_REQUEST['message']; ?>")
+        <?php } ?>  
+    </script>
     <script src="js/login.js"></script>
 </body>
 </html>

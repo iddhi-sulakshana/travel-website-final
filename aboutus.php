@@ -1,4 +1,6 @@
-<?php include 'head.php' ?>
+<?php 
+  include 'head.php';
+?>
 	<title>About Us</title>
 	<link rel="stylesheet" hreflang="" href="css/about.css">
 <?php include 'header.php' ?>

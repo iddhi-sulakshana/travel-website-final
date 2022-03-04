@@ -12,7 +12,13 @@
 				<li><a href="notice.php">Notices</a></li>
 				<li><a href="attraction.php">Attraction</a></li>
 				<li><a href="aboutus.php">About Us</a></li>
-				<li><a href="login.php" class="login"><button class="btn-animation">Login</button></a></li>
+				<?php
+					if(isset($_SESSION['logged'])){
+						echo '<li><a href="profile.php" class="login"><button class="btn-animation">Account</button></a></li>';
+					}else{
+						echo '<li><a href="login.php" class="login"><button class="btn-animation">Login</button></a></li>';
+					}
+				?>
 			</ul>
 		</nav>
 		<div class="burger">
