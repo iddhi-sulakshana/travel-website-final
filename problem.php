@@ -12,8 +12,8 @@
 ?>
   <section style="height:60vh;display:flex;justify-content:center;align-items:center;flex-direction:column;">
     <h1 style="color:red;">We ran Into the Problem</h1>
-    <h2 style="color:darkred;"><?php echo $_SESSION["error"]; ?></h2>
-    <a style="text-decoration:none" href='<?php echo $_SESSION["prevPage"] ?>'><h1>Go Back</h1></a>
+    <h2 style="color:darkred;"><?php echo htmlspecialchars($_SESSION["error"]); ?></h2>
+    <a style="text-decoration:none" href='<?php echo htmlspecialchars($_SESSION["prevPage"]) ?>'><h1>Go Back</h1></a>
   </section>
 <?php 
   include 'footer.php';

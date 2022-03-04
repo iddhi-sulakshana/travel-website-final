@@ -28,7 +28,7 @@
                         <input type="text" name="EmailName" placeholder="Enter Email / Username" 
                         <?php 
                             if(isset($_REQUEST['EmailName'])){
-                                echo 'value = "' . $_REQUEST['EmailName'] . '"';
+                                echo 'value = "' . htmlspecialchars($_REQUEST['EmailName']) . '"';
                             }
                         ?> required>
                         <i class="far fa-envelope icon"></i>
@@ -73,7 +73,7 @@
                         <input type="text" name="uname" placeholder="Enter user name" required
                         <?php
                             if(isset($_REQUEST['upName'])){
-                                echo 'value="' . $_REQUEST['upName'] . '"';
+                                echo 'value="' . htmlspecialchars($_REQUEST['upName']) . '"';
                             }
                         ?>
                         >
@@ -83,7 +83,7 @@
                         <input type="text" name="email" placeholder="Enter your email" required
                         <?php
                             if(isset($_REQUEST['upEmail'])){
-                                echo 'value="' . $_REQUEST['upEmail'] . '"';
+                                echo 'value="' . htmlspecialchars($_REQUEST['upEmail']) . '"';
                             }
                         ?>
                         >
@@ -127,13 +127,7 @@
             </div>
         </div>
     </div>
-    
-    <script>
-        <?php 
-        if(isset($_REQUEST['message'])){?>
-            window.alert("<?php echo $_REQUEST['message']; ?>")
-        <?php } ?>  
-    </script>
+    <?php include 'messageDisplay.php' ?>
     <script src="js/login.js"></script>
 </body>
 </html>

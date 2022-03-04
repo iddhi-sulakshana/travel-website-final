@@ -79,13 +79,7 @@
       </form>
     </table>
   </section>
-  <?php include 'footer.php' ?>
-  <script>
-        <?php 
-        if(isset($_REQUEST['message'])){?>
-            window.alert("<?php echo $_REQUEST['message']; ?>")
-        <?php } ?>  
-    </script>
+  <?php include 'footer.php'; include 'messageDisplay.php' ?>
   <script>
     const pwd = document.getElementById('password');
     function fun1(e){

@@ -6,12 +6,17 @@
     header("Location: login.php");
     exit;
   }
-  if(trim($_REQUEST['email'] == '')){
+  $phone = htmlspecialchars($_REQUEST['phone']);
+  $email = htmlspecialchars($_REQUEST['email']);
+  $first = htmlspecialchars($_REQUEST['first']);
+  $last = htmlspecialchars($_REQUEST['last']);
+  $pwd = htmlspecialchars($_REQUEST['password']);
+  if(trim($email == '')){
     $message = "Provide Proper Email Address";
     header("Location: profile.php?message=" . $message);
     exit;
   }
-  $sql = "SELECT `userId` FROM `table_user` WHERE `email` = '" . $_REQUEST['email'] . "'";
+  $sql = "SELECT `userId` FROM `table_user` WHERE `email` = '" . $email . "'";
   $result = $conn->query($sql);
   if($result->num_rows > 0){
     $result = $result->fetch_assoc();
@@ -21,8 +26,8 @@
       exit;
     }
   }
-  if(!(trim($_REQUEST['phone'] == ''))){
-    $sql = "SELECT `userId` FROM `table_user` WHERE `phoneNo` = '" . $_REQUEST['phone'] . "'";
+  if(!(trim($phone == ''))){
+    $sql = "SELECT `userId` FROM `table_user` WHERE `phoneNo` = '" . $phone . "'";
     $result = $conn->query($sql);
     if($result->num_rows > 0){
       $result = $result->fetch_assoc();
@@ -56,11 +61,6 @@
     }
     move_uploaded_file($_FILES["img"]["tmp_name"], $target_file);
   }
-  $phone = htmlspecialchars($_REQUEST['phone']);
-  $email = htmlspecialchars($_REQUEST['email']);
-  $first = htmlspecialchars($_REQUEST['first']);
-  $last = htmlspecialchars($_REQUEST['last']);
-  $pwd = htmlspecialchars($_REQUEST['password']);
   $sql = "UPDATE `table_user` SET `phoneNo` = '" . $phone . "', `email` = '" . $email . "', `firstName` = '" . $first . "', `lastName` = '" . $last . "', `pwd` = '" . $pwd . "', `userImg` ='" . $img . "' WHERE `userId` = " . $_SESSION['Id'];
   if ($conn->query($sql) === TRUE) {
     echo "Record updated successfully";

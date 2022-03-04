@@ -73,7 +73,7 @@
 			<div class="main-content">
 				<div class="searched-content" id="listingContent">
 					<div class="searched-item">
-						<a href="vehicle_view.php">
+						<a href="vehicle_view.php?VId=1">
 						<img src="img/Vehicle/car1.jpg" alt="product image">
 						<h3>Rent a Car</h3>
 						<h1 class="product-price">$ 4500.<h2>00</h2></h1>
@@ -85,7 +85,7 @@
 						</a>
 					</div>
 					<div class="searched-item">
-						<a href="vehicle_view.php">
+						<a href="vehicle_view.php?VId=2">
 						<img src="img/Vehicle/van1.jpg" class="product-image" alt="product image">
 						<h3 class="product-title">Rent a car</h3>
 						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
@@ -97,7 +97,7 @@
 						</a>
 					</div>
 					<div class="searched-item">
-						<a href="vehicle_view.php">
+						<a href="vehicle_view.php?VId=3">
 						<img src="img/Vehicle/car2.jpg" class="product-image" alt="product image">
 						<h3 class="product-title">Rent a 3-Wheel</h3>
 						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
@@ -109,7 +109,7 @@
 						</a>
 					</div>
 					<div class="searched-item">
-						<a href="vehicle_view.php">
+						<a href="vehicle_view.php?VId=4">
 						<img src="img/Vehicle/van2.jpg" class="product-image" alt="product image">
 						<h3 class="product-title">Rent a Car</h3>
 						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
@@ -121,7 +121,7 @@
 						</a>
 					</div>
 					<div class="searched-item">
-						<a href="vehicle_view.php">
+						<a href="vehicle_view.php?VId=5">
 						<img src="img/Vehicle/van3.jpg" class="product-image" alt="product image">
 						<h3 class="product-title">Rent a Bus</h3>
 						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
@@ -133,7 +133,7 @@
 						</a>
 					</div>
 					<div class="searched-item">
-						<a href="vehicle_view.php">
+						<a href="vehicle_view.php?VId=6">
 						<img src="img/Vehicle/bus1.jpg" class="product-image" alt="product image">
 						<h3 class="product-title">Rent a car</h3>
 						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
@@ -145,7 +145,7 @@
 						</a>
 					</div>
 					<div class="searched-item">
-						<a href="vehicle_view.php">
+						<a href="vehicle_view.php?VId=7">
 						<img src="img/Vehicle/car3.jpg" class="product-image" alt="product image">
 						<h3 class="product-title">Rent a car</h3>
 						<h1 class="product-price">$ 1500.<h2>00</h2></h1>
@@ -157,7 +157,7 @@
 						</a>
 					</div>
 					<div class="searched-item">
-						<a href="vehicle_view.php">
+						<a href="vehicle_view.php?VId=8">
 						<img src="img/Vehicle/car4.jpg" class="product-image" alt="product image">
 						<h3 class="product-title">Rent a car</h3>
 						<h1 class="product-price">$ 1500.<h2>00</h2></h1>

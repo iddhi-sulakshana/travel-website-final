@@ -43,10 +43,10 @@ CREATE TABLE table_hotel (
 CREATE TABLE table_hotelReview(
   hotelId INT UNSIGNED,
   userId INT UNSIGNED,
-  rate DECIMAL(2,1) NOT NULL,
-  message VARCHAR(50) NOT NULL,
+  rate INT(1) NOT NULL,
+  message VARCHAR(100) NOT NULL,
   DATE timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (hotelId),
+  PRIMARY KEY (hotelId, userId),
   FOREIGN KEY (hotelId) REFERENCES table_hotel(hotelId),
   FOREIGN KEY (userId) REFERENCES table_user(userId)
 );
@@ -77,10 +77,10 @@ CREATE TABLE table_restaurant (
 CREATE TABLE table_restaurantReview(
   restaurantId INT UNSIGNED,
   userId INT UNSIGNED,
-  rate DECIMAL(2,1) NOT NULL,
-  message VARCHAR(50) NOT NULL,
+  rate INT(1) NOT NULL,
+  message VARCHAR(100) NOT NULL,
   DATE timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (restaurantId),
+  PRIMARY KEY (restaurantId, userId),
   FOREIGN KEY (restaurantId) REFERENCES table_restaurant(restaurantId),
   FOREIGN KEY (userId) REFERENCES table_user(userId)
 );
@@ -112,10 +112,10 @@ CREATE TABLE table_vehicle (
 CREATE TABLE table_vehicleReview(
   vehicleId INT UNSIGNED,
   userId INT UNSIGNED,
-  rate DECIMAL(2,1) NOT NULL,
-  message VARCHAR(50) NOT NULL,
+  rate INT(1) NOT NULL,
+  message VARCHAR(100) NOT NULL,
   DATE timestamp NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (vehicleId),
+  PRIMARY KEY (vehicleId, userId),
   FOREIGN KEY (vehicleId) REFERENCES table_vehicle(vehicleId),
   FOREIGN KEY (userId) REFERENCES table_user(userId)
 );
