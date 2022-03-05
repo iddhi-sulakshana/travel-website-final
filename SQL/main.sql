@@ -127,7 +127,9 @@ CREATE TABLE table_package(
   packageTitle VARCHAR(40) NOT NULL,
   packageDescription VARCHAR(40) NOT NULL,
   packagePrice DECIMAL(10,2) NOT NULL,
-  packageRating DECIMAL(2,1) NOT NULL,
+  packageRating INT(1) NOT NULL,
+  packageLink TEXT NOT NULL,
+  packageImage TEXT NOT NULL,
   PRIMARY KEY (packageId)
 );
 
@@ -138,7 +140,7 @@ CREATE TABLE table_attraction(
   attractionTitle VARCHAR(40) NOT NULL,
   attractionImageHome VARCHAR(40) NOT NULL,
   attractionImagePri VARCHAR(40) NOT NULL,
-  attractionDescription TEXT NOT NULL,
+  attractionDescription VARCHAR(20) NOT NULL,
   attractionLocationLink TEXT NOT NULL,
   PRIMARY KEY (attractionId)
 );
@@ -230,3 +232,20 @@ VALUES
 ('Adam''s Rock','adams.jpg','adam.jpg','<p>Adam''s Peak is a famous mountain and tourist attraction having its summit at an altitude of 2243 m.<br><br> Also known as Sri Pada, (sacred footprint), the famous spot is situated in Southern Sri Lanka which is revered by Buddhists, Hindus, Christians and Muslims. <br><br>Embark on a fun and enthralling overnight trek to Adam''s Peak and climb up approximately 5500 steps to reach the summit. <br><br>Enjoy a magical sunrise from the top with your companions and create some lasting memories of this experience!</p><br><hr><b>Location : </b>Nallathaniya.<br><br><b>Age Group : </b>12-60 yrs.<br><br><b>Best time to visit : </b>3:30 PM (Day 1) to 9:30 PM (Day 2).','https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15846.689655371065!2d80.49063343279172!3d6.809642771251774!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae3977589234b59%3A0x8723ad471d5b37dc!2sSri%20Pada%20%2F%20Adam&#39;s%20Peak!5e0!3m2!1sen!2slk!4v1645972799031!5m2!1sen!2slk'),
 ('World''s End','worldsend.webp',"world's end.jpg",'<p>One of the most jaw-dropping experience you can ever have in Sri Lanka is the World’s End on the Horton Plains. <br><br>Enjoy a tuk-tuk ride to the Horton plains from Nuwara Eliya and it is among the best tourist places to visit in Sri Lanka.<br><br>You can see animals such as leopards and deer. <br><br>Experience the amazing flora and fauna which will be an amazing experience.</p><br><hr><b>Location : </b>The nearest station is in Nanu Oya which is about 8km.<br><br><b>Highlights : </b>Baker’s fall which is truly spectacular<br><br><b>Best time to visit : </b>The best time to reach there is before 10:00 AM before it gets too cloudy because you will not be able to see anything after that.','https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3961.9145370189353!2d80.79227851453214!3d6.780255395099127!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae389cf46cb3f67%3A0x818e33bb2a32673a!2sGreat%20World&#39;s%20End%20Drop!5e0!3m2!1sen!2slk!4v1641320777358!5m2!1sen!2slk'),
 ('Unawatuna Beach','unawatuna.jpg','unawatuna.jpg','<p>Relax your senses in the sparkling waters well complemented with a lazy sandy idyll in Unawatuna beach. <br><br>It was once named the world''s best beach by Discovery Channel. <br><br>One and a half hour drive from Colombo makes it easier for people to reach this beach.</p><br><hr><b>Location : </b>A coastal town in the Galle district of Sri Lanka, Unawatuna is a suburb of Galle that is located at a distance of about 5 kilometres southeast to the city center and approximately 108 kilometres south of Sri Lanka’s capital city - Colombo<br><br><b>Timings : </b>Open 24 hours<br><br><b>Facilities : </b>Safe ocean swimming conditions, marine sports training and equipment provisions, yoga centres, spa, and massage centres.','https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7935.80549404774!2d80.24340564429929!3d6.008090732508506!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae172eebc19a0dd%3A0x1bcfa16fa4ddf516!2sUnawatuna%20Beach!5e0!3m2!1sen!2slk!4v1641437979434!5m2!1sen!2slk');
+
+-- @BLOCK
+-- insert into the packages
+INSERT INTO `table_package`(`packageTitle`, `packageDescription`, `packagePrice`, `packageRating`, `packageLink`, `packageImage`) 
+VALUES 
+('Sigiriya Fortress','Tours Available from Monday to Sunday','30000.00',5,'https://www.shatours.com/sri-lanka/sigiriya/', 'sigiriya.jpg'),
+('Temple of the Sacred Tooth','Tours Available from Monday to Sunday','15000.00',5,'https://www.shatours.com/4-days-sri-lanka-deluxe-tour/','temple_of_tooth.jpg'),
+('Galle Day Tour','Tours Available from Monday to Sunday','10000.00',4,'https://www.shatours.com/negombo-galle-hikkaduwa-tour/','galle_day.jpg'),
+('10 Day Holiday Tour','Tours Available from Monday to Sunday','135000.00',5,'https://www.shatours.com/srilanka/tour-packages/10-days-tour/','10_day_tour.jpg'),
+('Sacred City of Anuradhapura','Tours Available from Monday to Sunday','45000.00',5,'https://www.shatours.com/negombo-anuradhapura-tour/','anuradhapura.jpg'),
+('Whale Watching - Mirissa','Tours Available from Monday to Sunday','35000.00',3,'https://www.shatours.com/sri-lanka/mirissa-beach/','whale_watching.jpg'),
+('Udawalawa National Park','Tours Available from Monday to Sunday','15000.00',4,'https://www.tripadvisor.com/Attractions-g674587-Activities-c42-Udawalawe_National_Park.html','udawalawa.jpg'),
+('07 Day Holiday Tour','Tours Available from Monday to Sunday','85000.00',2,'https://www.shatours.com/srilanka/tour-packages/7-days-tour/','7day_trip.jpg'),
+('Nuwara Eliya','Tours Available from Monday to Sunday','10000.00',5,'https://www.tripadvisor.com/Tourism-g608524-Nuwara_Eliya_Central_Province-Vacations.html','nuwaraeliya.jpg'),
+('05 Day Holiday Tour','Tours Available from Monday to Sunday','55000.00',1,'https://www.shatours.com/srilanka/tour-packages/5-days-tour/','5_day_tour.jpg'),
+('Sinharaja Forest Reserve','Forests, Nature & Wildlife Areas Viharahena, Sri Lanka','32000.00',4,'https://www.tripadvisor.com/Attraction_Review-g23719828-d447525-Reviews-Sinharaja_Forest_Reserve-Viharahena_Southern_Province.html','sinha.jpg'),
+('Royal Botanical Gardens','Gardens, Nature & Wildlife Areas Peradeniya, Sri Lanka','10000.00',5,'https://www.tripadvisor.com/Attraction_Review-g1194819-d523519-Reviews-Royal_Botanical_Gardens-Peradeniya_Kandy_District_Central_Province.html','royal_garder.jpg');
