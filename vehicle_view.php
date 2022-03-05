@@ -123,7 +123,7 @@
 				}
 				?>
 				</p>
-				<p><?php echo ($resultrating->num_rows > 0) ? $resultrating->num_rows : "No" ?> ratings</p>
+				<p><?php echo ($resultrating->num_rows > 0) ? $resultrating->num_rows : "No" ?> Reviews</p>
 			</div>
 			<div class="seperate-rating">
 			<?php $numrows = ($resultrating->num_rows > 0) ? $resultrating->num_rows : 1; ?>					
