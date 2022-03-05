@@ -160,10 +160,7 @@ Content Section
     display: grid;
     grid-gap: 2em;
     margin-bottom: 10px;
-}
-
-.searched-content {
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
 }
 
 .searched-content .searched-item {

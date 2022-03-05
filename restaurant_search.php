@@ -1,4 +1,32 @@
-<?php include 'head.php' ?>
+<?php 
+		include 'head.php';
+		if(isset($_REQUEST['restaurantname']) && trim($_REQUEST['restaurantname']) != ''){
+			$restname = htmlspecialchars($_REQUEST['restaurantname']);
+		}
+		if(isset($_REQUEST['district']) && trim($_REQUEST['district']) != ''){
+			$district = htmlspecialchars($_REQUEST['district']);
+		}
+		include 'dbcon.php';
+		$sql = "SELECT `restaurantId`, `restaurantImagePri`, `restaurantName`, `restaurantPrice`, `restaurantDistrict`, `restaurantRating` FROM `table_restaurant`";
+		if(isset($restname) || isset($district)){
+			$sql .= " WHERE";
+			if(isset($restname)){
+				$sql .= " restaurantName LIKE '%" . $restname . "%'";
+			}
+			if(isset($district)){
+				$tmpsql = explode(" ", $sql);
+				if(end($tmpsql) == "WHERE"){
+					$sql .= " restaurantDistrict='" . $district . "'";
+				} else{
+					$sql .= " AND restaurantDistrict='" . $district . "'";
+				}
+				unset($tempsql);
+			}
+		}
+		$conn = OpenCon();
+		$result = $conn->query($sql);
+		CloseCon($conn);
+	?>
 	<title>Search For Restaurants</title>
 	<link rel="stylesheet" hreflang="" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 	<link rel="stylesheet" href="css/restaurantSearch.css" type="text/css">
@@ -12,15 +40,15 @@
 
 	<section class="advanced-search">
 		<h3>Search Restaurant</h3>
-		<form name="advanced-search-form" method="GET" action="restaurant_search.php">
+		<form name="advanced-search-form" method="POST" action="restaurant_search.php">
 			<div class="form-content">
 				<div class="wrapper wrapper0">
-					<label for="location">Location</label>
-					<input type="text" name="location" placeholder="City, Hotel, Restaurants, etc." required="">
+					<label for="restaurantname">Restaurant Name</label>
+					<input type="text" name="restaurantname" placeholder="Restaurants Name.">
 				</div>
 				<div class="wrapper wrapper1">
 					<label for="district">District</label>
-					<select name="district" class="inputType" required="">
+					<select name="district" class="inputType">
 						<option value="">Select District</option>
 						<option value="Ampara">Ampara</option>
 						<option value="Anuradhapura">Anuradhapura</option>
@@ -57,195 +85,38 @@
 			</div>
 		</form>
 	</section>
+
 	<section class="grid-container">
 		<div class="main-content">
 			<div class="searched-content grid-view" id="listingContent">
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant1.jpg">
-						<h3>Gallery Café</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
+				<?php
+				if($result->num_rows > 0){
+					foreach ($result as $item) { ?>
+						<div class="searched-item">
+							<a href="restaurant_view.php?RId=<?php echo $item['restaurantId'] ?>">
+								<img src="img/Restaurant/<?php echo $item['restaurantImagePri'] ?>">
+								<h3><?php echo $item['restaurantName'] ?></h3>
+								<h1 class="product-price">&#128101; <?php echo $item['restaurantPrice'] ?></h1>
+								<div>
+									<p class="details">$$$-$$$$</p>
+									<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> <?php echo $item['restaurantDistrict'] ?></p>
+									<p class="details"><i class="fa fa-star checked"></i> <?php echo $item['restaurantRating'] ?></p>
+								</div>
+							</a>
 						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant2.webp">
-						<h3>Hilton</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant3.jpg">
-						<h3>Curry Leaf</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant4.jpg">
-						<h3>Seafood Cove</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant5.jpg">
-						<h3>Ministry of Crab</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant6.jpg">
-						<h3>Graze Kitchen</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant7.jpg">
-						<h3>Monsoon</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant1.jpg">
-						<h3>Gallery Café</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant2.webp">
-						<h3>Hilton</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant3.jpg">
-						<h3>Curry Leaf</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant4.jpg">
-						<h3>Seafood Cove</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
-				<div class="searched-item">
-					<a href="restaurant_view.php">
-						<img src="img/Restaurant/restaurant5.jpg">
-						<h3>Ministry of Crab</h3>
-						<div>
-							<p class="details">10AM-12AM</p>
-						</div>
-						<h1 class="product-price">&#128101; 2500LKR</h1>
-						<div>
-							<p class="details">$$$-$$$$</p>
-							<p class="details"><i class="fa fa-map-marker" aria-hidden="true"></i> Colombo</p>
-							<p class="details"><i class="fa fa-star checked"></i> 4.5</p>
-						</div>
-					</a>
-				</div>
+				<?php	
+					}
+				} else {
+					echo "<h1>No Result</h1>";
+				}
+				?>
 			</div>
 		</div>
 	</section>
 
 
-	<?php include 'footer.php' ?>
+	<?php include 'footer.php';
+		include 'messageDisplay.php';	 ?>
 	<script src="js/restaurantSearch.js"></script>
 </body>
 
