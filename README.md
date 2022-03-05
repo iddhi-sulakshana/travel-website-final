@@ -31,26 +31,26 @@
   - [x] Home Page
   - [x] Hotel Search Page
   - [x] Vehicle Search Page
-  - [ ] Restaurant Search Page
+  - [x] Restaurant Search Page
   - [x] Hotel View Page
   - [x] Vehicle View Page
-  - [ ] Restaurants View Page
+  - [x] Restaurants View Page
   - [x] Attraction Page
   - [x] Attraction View Page
   - [x] Packages Page
   - [x] Sign in & Sign up Page
-  - [ ] About Page
+  - [x] About Page
   - [x] Notices Page
 
 - **_Database_**
-  - [ ] Hotel Search Page
-  - [ ] Vehicle Search Page
-  - [ ] Restaurant Search Page
-  - [ ] Hotel View Page
-  - [ ] Vehicle View Page
-  - [ ] Restaurants View Page
-  - [ ] Attraction Page
-  - [ ] Attraction View Page
-  - [ ] Packages Page
-  - [ ] Sign in & Sign up Page
+  - [x] Hotel Search Page
+  - [x] Vehicle Search Page
+  - [x] Restaurant Search Page
+  - [x] Hotel View Page
+  - [x] Vehicle View Page
+  - [x] Restaurants View Page
+  - [x] Attraction Page
+  - [x] Attraction View Page
+  - [x] Packages Page
+  - [x] Sign in & Sign up Page
 
