@@ -47,17 +47,17 @@
 <?php include 'header.php' ?>
 	<section class="grid-container">
 		<div class="grid-images">
-			<img id="main-image" src="img/restaurant/<?php echo $restaurantRow['restaurantImagePri'] ?>" alt="image display">
-			<img src="img/restaurant/<?php echo $restaurantRow['restaurantImagePri'] ?>"  class="sub-image">
+			<img id="main-image" src="img/Restaurant/<?php echo $restaurantRow['restaurantImagePri'] ?>" alt="image display">
+			<img src="img/Restaurant/<?php echo $restaurantRow['restaurantImagePri'] ?>"  class="sub-image">
 			<?php 
 				if(!(is_null($restaurantRow['restaurantImage1']))){
-					echo '<img src="img/restaurant/' . $restaurantRow['restaurantImage1'] . '"  class="sub-image">';
+					echo '<img src="img/Restaurant/' . $restaurantRow['restaurantImage1'] . '"  class="sub-image">';
 				}
 				if(!(is_null($restaurantRow['restaurantImage2']))){
-					echo '<img src="img/restaurant/' . $restaurantRow['restaurantImage2'] . '"  class="sub-image">';
+					echo '<img src="img/Restaurant/' . $restaurantRow['restaurantImage2'] . '"  class="sub-image">';
 				}
 				if(!(is_null($restaurantRow['restaurantImage3']))){
-					echo '<img src="img/restaurant/' . $restaurantRow['restaurantImage3'] . '"  class="sub-image">';
+					echo '<img src="img/Restaurant/' . $restaurantRow['restaurantImage3'] . '"  class="sub-image">';
 				}
 			?>
 			</div>

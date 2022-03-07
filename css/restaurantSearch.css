@@ -229,6 +229,10 @@
 	.main-content{
 		grid-column: 1/-1;
 	}
+	
+.searched-content.grid-view{
+	grid-template-columns: repeat(1, minmax(250px, 1fr));
+}
 }
 
 /*-------------------------*\

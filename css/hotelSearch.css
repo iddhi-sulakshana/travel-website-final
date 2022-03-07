@@ -270,6 +270,9 @@ Device max width is 760 orlower
         grid-column: 1/-1;
         margin-bottom: 5px;
     }
+	.searched-content{
+		grid-template-columns: repeat(1, minmax(250px, 1fr));
+	}
 }
 
 /*-------------------------*\
