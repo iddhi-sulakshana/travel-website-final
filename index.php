@@ -3,11 +3,11 @@
     $conn = OpenCon();
     $sql = "SELECT `vehicleId`, `vehicleName`, `vehiclePrice`, `vehicleSeats`, `vehicleAddress` FROM `table_vehicle` ORDER BY RAND() LIMIT 3";
     $vehicleResult = $conn->query($sql);
-    $sql = "SELECT `hotelId`, `hotelName`, `hotelDistrict`, `hotePrice` FROM `table_hotel` ORDER BY RAND() LIMIT 3";
+    $sql = "SELECT `hotelId`, `hotelName`, `hotelDistrict`, `hotelPrice` FROM `table_hotel` ORDER BY RAND() LIMIT 3";
     $hotelResult = $conn->query($sql);
     $sql = "SELECT `restaurantId`, `restaurantName`, `restaurantDistrict`, `restaurantPrice` FROM `table_restaurant` ORDER BY RAND() LIMIT 3";
     $restaurantResult = $conn->query($sql);
-
+    CloseCon($conn);
     include 'head.php'
 ?>
     <title>Plan&Go</title>
