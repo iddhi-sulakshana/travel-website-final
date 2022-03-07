@@ -20,7 +20,7 @@
             <div class="header-title">
                 <h1>Leave Your Footprints</h1>
                 <p>
-                    The tourism industry plays a significant role in the sri lanaka economy with over 1600Km of coastline, Sri Lanaka can be known for its tropical beach resorts and other tourist attractions including ancient heritage sites and forest resorts in wildife sanctuaries.many visitors are attracted because of its cultural diversities and they visit these places to make their tour However there ate many amazing places that you should not miss whenever you visit around Sri Lanaka
+                The tourism industry plays a significant role in the Sri Lankan economy with over 1600Km of coastline, Sri Lanka is famous for tropical beaches and other tourist attractions such as Ancient heritage and archeological sites ,forests, wild-life sanctuaries and many more. Tourists are attracted because of Sri Lanka's cultural diversities. However there are many amazing places that you should not miss out whenever you visit Sri Lanka.
                 </p>
             </div>
         </div>
@@ -278,7 +278,7 @@
                 <span class="sm-title">know about Our special offers</span>
                 <h2 class="lg-title">
                     <?php
-                        if(!($vehicleResult->num_rows > 0 AND $hotelResult->num_rows > 0 AND $restaurantResult->num_rows > 0)){
+                        if($vehicleResult->num_rows == 0 AND $hotelResult->num_rows == 0 AND $restaurantResult->num_rows == 0){
                             echo "No Special Offers";
                         } else {
                             echo "Special Offers";

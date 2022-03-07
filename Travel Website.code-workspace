@@ -18,6 +18,19 @@
 				"database": "test",
 				"username": "root",
 				"password": ""
+			},
+			{
+				"mysqlOptions": {
+					"authProtocol": "default"
+				},
+				"previewLimit": 50,
+				"server": "sql210.epizy.com",
+				"port": 3306,
+				"driver": "MySQL",
+				"name": "infinity free",
+				"username": "epiz_31220445",
+				"password": "zcwvLJ5ubU0Dg",
+				"database": "epiz_31220445_traveldb"
 			}
 		]
 	}
