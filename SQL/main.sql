@@ -1,3 +1,10 @@
+-- Create the database if it does not exist
+CREATE DATABASE IF NOT EXISTS traveldb;
+
+-- Use the created database
+USE traveldb;
+
+
 -- @BLOCK
 -- Table structure for table table_user
 CREATE TABLE table_user(
